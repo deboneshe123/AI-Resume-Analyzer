@@ -1,7 +1,7 @@
 // ==================== API CONFIGURATION ====================
 
 // API Base URL - Change this for production
-const API_BASE_URL = 'http://localhost:5000';
+const API_BASE_URL = 'https://ai-resume-analyzer-job-match-scoring.onrender.com';
 
 // ==================== TYPE DEFINITIONS ====================
 
