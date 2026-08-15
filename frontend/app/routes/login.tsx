@@ -24,7 +24,7 @@ export default function Login() {
       : formData;
 
     try {
-      const res = await fetch(`http://localhost:5000${endpoint}`, {
+      const res = await fetch(`https://ai-resume-analyzer-job-match-scoring.onrender.com${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',

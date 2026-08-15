@@ -48,7 +48,7 @@ export default function Home() {
 
   const checkAuth = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/auth/check', {
+      const res = await fetch('https://ai-resume-analyzer-job-match-scoring.onrender.com/api/auth/check', {
         credentials: 'include'
       });
       const data = await res.json();
@@ -74,7 +74,7 @@ export default function Home() {
 
   const fetchMyResumes = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/candidate/resumes', {
+      const res = await fetch('https://ai-resume-analyzer-job-match-scoring.onrender.com/api/candidate/resumes', {
         credentials: 'include'
       });
       const data = await res.json();
@@ -87,7 +87,7 @@ export default function Home() {
   const analyzeResume = async (resumeId: string) => {
     setAnalyzing(true);
     try {
-      const res = await fetch(`http://localhost:5000/api/candidate/analyze/${resumeId}`, {
+      const res = await fetch(`https://ai-resume-analyzer-job-match-scoring.onrender.com/api/candidate/analyze/${resumeId}`, {
         credentials: 'include'
       });
       const data = await res.json();
@@ -118,7 +118,7 @@ export default function Home() {
     setInterviewLoading(true);
     setInterviewQuestions(null);
     try {
-      const res = await fetch(`http://localhost:5000/api/interview-questions/${resumeId}`, {
+      const res = await fetch(`https://ai-resume-analyzer-job-match-scoring.onrender.com/api/interview-questions/${resumeId}`, {
         credentials: 'include'
       });
       const data = await res.json();
@@ -139,7 +139,7 @@ export default function Home() {
   };
 
   const handleLogout = async () => {
-    await fetch('http://localhost:5000/api/auth/logout', {
+    await fetch('https://ai-resume-analyzer-job-match-scoring.onrender.com/api/auth/logout', {
       method: 'POST',
       credentials: 'include'
     });
@@ -180,7 +180,7 @@ export default function Home() {
     formData.append('jobTitle', 'Software Engineer');
 
     try {
-      const res = await fetch('http://localhost:5000/api/candidate/upload', {
+      const res = await fetch('https://ai-resume-analyzer-job-match-scoring.onrender.com/api/candidate/upload', {
         method: 'POST',
         credentials: 'include',
         body: formData

@@ -39,7 +39,7 @@ export default function RecruiterDashboard() {
 
   const checkAuth = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/auth/check', {
+      const res = await fetch('https://ai-resume-analyzer-job-match-scoring.onrender.com/api/auth/check', {
         credentials: 'include'
       });
       const data = await res.json();
@@ -59,7 +59,7 @@ export default function RecruiterDashboard() {
   const fetchResumes = async () => {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/recruiter/resumes', {
+      const res = await fetch('https://ai-resume-analyzer-job-match-scoring.onrender.com/api/recruiter/resumes', {
         credentials: 'include'
       });
       const data = await res.json();
@@ -79,7 +79,7 @@ export default function RecruiterDashboard() {
 
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/recruiter/rank', {
+      const res = await fetch('https://ai-resume-analyzer-job-match-scoring.onrender.com/api/recruiter/rank', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -95,7 +95,7 @@ export default function RecruiterDashboard() {
   };
 
   const handleLogout = async () => {
-    await fetch('http://localhost:5000/api/auth/logout', {
+    await fetch('https://ai-resume-analyzer-job-match-scoring.onrender.com/api/auth/logout', {
       method: 'POST',
       credentials: 'include'
     });
@@ -104,7 +104,7 @@ export default function RecruiterDashboard() {
   };
 
   const downloadResume = (id: string) => {
-    window.open(`http://localhost:5000/api/resume/${id}/download`, '_blank');
+    window.open(`https://ai-resume-analyzer-job-match-scoring.onrender.com/api/resume/${id}/download`, '_blank');
   };
 
   const handleToggleQuestions = async (resume: Resume) => {
@@ -123,7 +123,7 @@ export default function RecruiterDashboard() {
 
     // Try loading previously generated questions first (avoids paying for AI twice)
     try {
-      const res = await fetch(`http://localhost:5000/api/interview-questions/${resume.id}`, {
+      const res = await fetch(`https://ai-resume-analyzer-job-match-scoring.onrender.com/api/interview-questions/${resume.id}`, {
         credentials: 'include'
       });
       if (res.ok) {
@@ -142,7 +142,7 @@ export default function RecruiterDashboard() {
     setGeneratingFor(resume.id);
     setQuestionError(prev => ({ ...prev, [resume.id]: '' }));
     try {
-      const res = await fetch(`http://localhost:5000/api/recruiter/interview-questions/${resume.id}`, {
+      const res = await fetch(`https://ai-resume-analyzer-job-match-scoring.onrender.com/api/recruiter/interview-questions/${resume.id}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
