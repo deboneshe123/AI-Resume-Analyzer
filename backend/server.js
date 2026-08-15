@@ -54,6 +54,12 @@ mongoose.connect(process.env.MONGO_URI, {
 .catch(err => console.error('❌ MongoDB Connection Error:', err));
 
 // ==================== MIDDLEWARE ====================
+// Render (and most hosts) sit behind a reverse proxy that terminates HTTPS.
+// Without this, Express thinks every request is plain HTTP, so it silently
+// refuses to set cookies marked "secure" — which is why login worked but no
+// session cookie was ever sent back.
+app.set('trust proxy', 1);
+
 app.use(cors({
   origin: process.env.FRONTEND_URL || "*",
   credentials: true
